@@ -10,7 +10,7 @@ There is a solid state relay to switch the heater *On* and *Off*, as well as a *
 - DHT Sensor: https://www.adafruit.com/product/393
 - Solid State Relay: https://www.sparkfun.com/products/13015
 
-![jsSauna - Webapp](/docs/images/ui.png)
+![jsSauna - Webapp](https://github.com/ardean/jsSauna/blob/master/docs/images/ui.png?raw=true)
 
 ## Quick Start
 
