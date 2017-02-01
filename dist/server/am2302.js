@@ -3,10 +3,14 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-let dhtSensor;
 
-if (process.env.NODE_ENV === "production") {
+var _util = require("util");
+
+let dhtSensor;
+try {
   dhtSensor = require("node-dht-sensor");
+} catch (e) {
+  (0, _util.log)("node-dht-sensor is not installed! Using test data!");
 }
 
 class AM2302 {

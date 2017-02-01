@@ -4,11 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _util = require("util");
+
 var _events = require("events");
 
 let Gpio;
-if (process.env.NODE_ENV === "production") {
+try {
   Gpio = require("onoff").Gpio;
+} catch (e) {
+  (0, _util.log)("onoff is not installed! Ignoring On / Off requests!");
 }
 
 class Relay extends _events.EventEmitter {

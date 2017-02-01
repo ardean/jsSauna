@@ -1,8 +1,11 @@
+import { log } from "util";
 import { EventEmitter } from "events";
 
 let Gpio;
-if (process.env.NODE_ENV === "production") {
+try {
   Gpio = require("onoff").Gpio;
+} catch (e) {
+  log("onoff is not installed! Ignoring On / Off requests!");
 }
 
 export default class Relay extends EventEmitter {

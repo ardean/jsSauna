@@ -1,7 +1,10 @@
-let dhtSensor;
+import { log } from "util";
 
-if (process.env.NODE_ENV === "production") {
+let dhtSensor;
+try {
   dhtSensor = require("node-dht-sensor");
+} catch (e) {
+  log("node-dht-sensor is not installed! Using test data!");
 }
 
 export default class AM2302 {

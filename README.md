@@ -5,12 +5,14 @@
 **A Web Based Sauna Control System written in JavaScript**
 
 I use this package to control my sauna with my **Raspberry pi**.
-There is a solid state relay to switch the heater *On* and *Off*, as well as a *temperature* and *humidity* sensor to measure the surroundings.
+There is a solid state relay to switch the heater `On` and `Off`, as well as a `temperature` and `humidity` sensor to measure the surroundings.
 
-- DHT Sensor: https://www.adafruit.com/product/393
-- Solid State Relay: https://www.sparkfun.com/products/13015
+- DHT Sensor: [https://www.adafruit.com/product/393](https://www.adafruit.com/product/393)
+- Solid State Relay: [https://www.sparkfun.com/products/13015](https://www.sparkfun.com/products/13015)
 
 ![jsSauna - Webapp](docs/images/ui.png)
+
+Pick a `target temperature` and switch the sauna `On` / `Off`.
 
 ## Quick Start
 
@@ -69,11 +71,14 @@ $ npm start
 
 ## Production
 
-please set the environment variable for production use:
+I'm using [pm2](https://www.npmjs.com/package/pm2) on my production system to start jsSauna.
 
-```sh
-NODE_ENV="production" jsSauna --rp 14 --sp 4
-```
+Make sure you install jsSauna with all optional dependencies!
+Otherwise you will use **testdata** for the sensors and On / Off requests will be **ignored** for the relay!
+
+### Troubleshooting
+
+If you have problems installing jsSauna globally as root using `sudo npm i -g jssauna`, you can try the option `--unsafe-perm`.
 
 ## TODO
 
