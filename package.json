@@ -7,6 +7,18 @@
   "repository": "https://github.com/ardean/jsSauna",
   "bugs": "https://github.com/ardean/jsSauna/issues",
   "license": "MIT",
+  "keywords": [
+    "sauna",
+    "jsSauna",
+    "raspberry",
+    "pi",
+    "raspberry-pi",
+    "control",
+    "sauna-control",
+    "webinterface",
+    "web-interface",
+    "web"
+  ],
   "scripts": {
     "start": "babel-node src/cli.js --username admin --pw 1234",
     "export": "npm run build && npm run export-server && npm run export-html && npm run export-css && npm run export-img",
