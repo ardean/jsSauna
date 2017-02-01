@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>jsSauna</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="loading">
+    <span class="container">Loading</span>
+  </div>
+  <div class="error-wrapper">
+    <div class="error">
+      <span class="container"></span>
+    </div>
+  </div>
+  <div class="container login">
+    <h1>jsSauna</h1>
+    <h3>Login</h3>
+    <form class="login-form">
+      <div class="row">
+        <input type="text" placeholder="Username" class="login-username" id="login-username">
+      </div>
+      <div class="row">
+        <input type="password" placeholder="Password" class="login-pw" id="login-pw">
+      </div>
+      <div class="row">
+        <div class="login-error"></div>
+      </div>
+      <div class="row">
+        <button class="login-submit" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+  <div class="container main">
+    <h1>jsSauna</h1>
+    <div class="row">
+      <input type="checkbox" class="is-sauna-on" id="is-sauna-on">
+      <label for="is-sauna-on">On / Off</label>
+    </div>
+    <div class="row">
+      <div class="current-target-temperature"></div>
+      <input type="range" min="0" max="0" class="target-temperature-range">
+    </div>
+    <div class="info">
+      <div class="row">
+        <div class="secondary">Temperature</div>
+        <div class="current-temperature"></div>
+      </div>
+      <div class="row">
+        <div class="secondary">Humidity</div>
+        <div class="current-humidity"></div>
+      </div>
+    </div>
+  </div>
+  <script src="../sockets/socket.io.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
