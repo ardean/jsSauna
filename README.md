@@ -77,7 +77,7 @@ NODE_ENV="production" jsSauna --rp 14 --sp 4
 ## TODO
 
 - API Documentation
-- Support multiple Relay
+- Support multiple Relays
 - Support more and multiple DHT sensors
 
 ## License
