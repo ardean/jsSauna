@@ -32,23 +32,23 @@ $ jsSauna --rp 14 --sp 4
   - `-p PORT`
   - `--port PORT`
 - override default target temperature (50°C):
- - `-t TARGET_TEMPERATURE`
- - `--target-temperature TARGET_TEMPERATURE`
+  - `-t TARGET_TEMPERATURE`
+  - `--target-temperature TARGET_TEMPERATURE`
 - override default max temperature (60°C):
- - `-m MAX_TEMPERATURE`
- - `--max-temperature MAX_TEMPERATURE`
+  - `-m MAX_TEMPERATURE`
+  - `--max-temperature MAX_TEMPERATURE`
 - **required** set solid state relay pin:
- - `--rp RELAY_PIN`
- - `--relay-pin RELAY_PIN`
+  - `--rp RELAY_PIN`
+  - `--relay-pin RELAY_PIN`
 - **required** set DHT sensor pin:
- - `--sp SENSOR_PIN`
- - `--sensor-pin SENSOR_PIN`
+  - `--sp SENSOR_PIN`
+  - `--sensor-pin SENSOR_PIN`
 - set optional drive strength (gpio command):
- - `--drive-strength DRIVE_STRENGTH`
+  - `--drive-strength DRIVE_STRENGTH`
 - set optional username for authentication:
- - `--username USERNAME`
+  - `--username USERNAME`
 - set optional password for authentication:
- - `--pw PW`
+  - `--pw PW`
 
 ## Installation
 
