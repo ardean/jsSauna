@@ -12,7 +12,7 @@ var _commander2 = _interopRequireDefault(_commander);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_commander2.default.version("0.1.0").option("-p, --port <port>", "override default webserver port", parseInt).option("-t, --target-temperature <targetTemperature>", "override default target temperature (50°C)", parseInt).option("-m, --max-temperature <maxTemperature>", "override default max temperature (60°C)", parseInt).option("--rp, --relay-pin <relayPin>", "set relay pin", parseInt).option("--sp, --sensor-pin <sensorPin>", "set dht sensor pin", parseInt).option("--drive-strength <strength>", "set optional drive strength for gpio", parseInt).option("--username <username>", "set username").option("--pw <pw>", "set password").parse(process.argv);
+_commander2.default.version("0.1.5").option("-p, --port <port>", "override default webserver port", parseInt).option("-t, --target-temperature <targetTemperature>", "override default target temperature (50°C)", parseInt).option("-m, --max-temperature <maxTemperature>", "override default max temperature (60°C)", parseInt).option("--rp, --relay-pin <relayPin>", "set relay pin", parseInt).option("--sp, --sensor-pin <sensorPin>", "set dht sensor pin", parseInt).option("--drive-strength <strength>", "set optional drive strength for gpio", parseInt).option("--username <username>", "set username").option("--pw <pw>", "set password").parse(process.argv);
 
 const sauna = new _.Sauna({
   targetTemperature: _commander2.default.targetTemperature,

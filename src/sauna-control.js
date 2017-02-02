@@ -19,6 +19,7 @@ export default class SaunaControl extends EventEmitter {
     if (!this.sauna) throw new Error("no sauna!");
 
     this.app = express();
+    this.app.disable("x-powered-by");
     this.app.use(express.static(this.publicFolder));
   }
 

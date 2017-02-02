@@ -4,7 +4,7 @@ import { Sauna, SaunaControl, AM2302, Relay } from "./";
 import program from "commander";
 
 program
-  .version("0.1.4")
+  .version("0.1.5")
   .option("-p, --port <port>", "override default webserver port", parseInt)
   .option("-t, --target-temperature <targetTemperature>", "override default target temperature (50°C)", parseInt)
   .option("-m, --max-temperature <maxTemperature>", "override default max temperature (60°C)", parseInt)
