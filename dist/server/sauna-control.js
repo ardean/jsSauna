@@ -35,13 +35,13 @@ class SaunaControl extends _events.EventEmitter {
     this.sauna = options.sauna;
     this.port = options.port || 80;
     this.rootPath = options.rootPath || "/";
-    this.publicFolder = options.publicFolder || fixWindowsPath(_path2.default.join(__dirname, "../public"));
+    this.clientFolder = options.clientFolder || fixWindowsPath(_path2.default.join(__dirname, "../client"));
 
     if (!this.sauna) throw new Error("no sauna!");
 
     this.app = (0, _express2.default)();
     this.app.disable("x-powered-by");
-    this.app.use(_express2.default.static(this.publicFolder));
+    this.app.use(_express2.default.static(this.clientFolder));
   }
 
   listen(port, fn) {

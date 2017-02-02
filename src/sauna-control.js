@@ -14,13 +14,13 @@ export default class SaunaControl extends EventEmitter {
     this.sauna = options.sauna;
     this.port = options.port ||  80;
     this.rootPath = options.rootPath || "/";
-    this.publicFolder = options.publicFolder || fixWindowsPath(path.join(__dirname, "../public"));
+    this.clientFolder = options.clientFolder || fixWindowsPath(path.join(__dirname, "../client"));
 
     if (!this.sauna) throw new Error("no sauna!");
 
     this.app = express();
     this.app.disable("x-powered-by");
-    this.app.use(express.static(this.publicFolder));
+    this.app.use(express.static(this.clientFolder));
   }
 
   listen(port, fn) {
