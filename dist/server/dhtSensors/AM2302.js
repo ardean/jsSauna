@@ -1,44 +1,29 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const util_1 = require("util");
-let dhtSensor;
+let rpiDhtSensor;
 try {
-    dhtSensor = require("node-dht-sensor");
+    rpiDhtSensor = require("rpi-dht-sensor");
 }
 catch (err) {
-    util_1.log("node-dht-sensor is not installed! Using test data!");
+    util_1.log("rpi-dht-sensor is not installed! Using test data!");
 }
 class AM2302 {
     constructor(pin, options) {
         this.pin = pin;
         options = options || {};
-        this.type = 22;
         this.round = typeof options.round === "undefined" ? true : options.round;
+        this.gpio = new rpiDhtSensor.DHT22(this.pin);
     }
     getData() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!dhtSensor)
-                return this.doRound(30, 20);
-            return new Promise((resolve, reject) => {
-                dhtSensor.read(this.type, this.pin, (err, temperature, humidity) => {
-                    if (err)
-                        return reject(err);
-                    if (this.round) {
-                        temperature = roundTwo(temperature);
-                        humidity = Math.round(humidity);
-                    }
-                    resolve(this.doRound(temperature, humidity));
-                });
-            });
-        });
+        if (!rpiDhtSensor)
+            return this.doRound(30, 20);
+        let { temperature, humidity } = this.gpio.read();
+        if (this.round) {
+            temperature = roundTwo(temperature);
+            humidity = Math.round(humidity);
+        }
+        return this.doRound(temperature, humidity);
     }
     doRound(temperature, humidity) {
         if (this.round) {
