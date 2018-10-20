@@ -28,7 +28,7 @@
     "build-app": "cd app && yarn build && rm -rf ../dist/app && cp -rf build ../dist/app"
   },
   "bin": {
-    "jssauna": "./dist/server/CLI.js"
+    "jssauna": "./bin/index.js"
   },
   "dependencies": {
     "commander": "^2.19.0",
