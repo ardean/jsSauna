@@ -57,7 +57,7 @@ $ jssauna --rp 14 --sp 4
 As dependency:
 
 ```sh
-$ npm install jssauna --save
+$ yarn add jssauna
 ```
 
 Play around and contribute to the project:
@@ -65,8 +65,8 @@ Play around and contribute to the project:
 ```sh
 $ git clone https://github.com/ardean/jsSauna
 $ cd jsSauna
-$ npm i
-$ npm start
+$ yarn
+$ yarn start
 ```
 
 ## Production
