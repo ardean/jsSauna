@@ -17,9 +17,9 @@ catch (err) {
     util_1.log("node-dht-sensor is not installed! Using test data!");
 }
 class AM2302 {
-    constructor(options) {
+    constructor(pin, options) {
+        this.pin = pin;
         options = options || {};
-        this.pin = options.pin;
         this.type = 22;
         this.round = typeof options.round === "undefined" ? true : options.round;
     }

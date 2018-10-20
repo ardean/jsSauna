@@ -8,14 +8,19 @@ try {
   log("node-dht-sensor is not installed! Using test data!");
 }
 
-export default class AM2302 implements DHTSensor {
-  pin: any;
-  type: number;
-  round: any;
+interface AM2302Options {
+  round?: boolean;
+}
 
-  constructor(options) {
+export default class AM2302 implements DHTSensor {
+  pin: number;
+  type: number;
+  round: boolean;
+
+  constructor(pin: number, options?: AM2302Options) {
+    this.pin = pin;
+
     options = options || {};
-    this.pin = options.pin;
     this.type = 22;
     this.round = typeof options.round === "undefined" ? true : options.round;
   }

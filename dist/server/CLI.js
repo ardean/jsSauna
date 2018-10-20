@@ -31,16 +31,16 @@ commander_1.default
     .option("--username <username>", "set username")
     .option("--pw <pw>", "set password")
     .parse(process.argv);
+if (typeof commander_1.default.relayPin === "undefined")
+    throw new Error("replayPin required");
+if (typeof commander_1.default.sensorPin === "undefined")
+    throw new Error("sensorPin required");
 const sauna = new Sauna_1.default({
     targetTemperature: commander_1.default.targetTemperature,
     maxTemperature: commander_1.default.maxTemperature,
-    relay: new Relay_1.default({
-        pin: commander_1.default.relayPin
-    }),
+    relay: new Relay_1.default(commander_1.default.relayPin),
     dhtSensors: [
-        new AM2302_1.default({
-            pin: commander_1.default.sensorPin
-        })
+        new AM2302_1.default(commander_1.default.sensorPin)
     ]
 });
 sauna

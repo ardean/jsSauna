@@ -8,20 +8,15 @@ try {
   log("onoff is not installed! Ignoring On / Off requests!");
 }
 
-export interface RelayOptions {
-  pin?: number;
-}
-
 export default class Relay extends EventEmitter {
   pin: any;
   turnedOn: boolean;
   gpio: import ("onoff").Gpio;
 
-  constructor(options?: RelayOptions) {
+  constructor(pin: number) {
     super();
 
-    options = options || {};
-    this.pin = options.pin;
+    this.pin = pin;
     this.turnedOn = false;
     if (Gpio) this.gpio = new Gpio(this.pin, "out");
   }

@@ -10,10 +10,9 @@ catch (err) {
     util_1.log("onoff is not installed! Ignoring On / Off requests!");
 }
 class Relay extends events_1.EventEmitter {
-    constructor(options) {
+    constructor(pin) {
         super();
-        options = options || {};
-        this.pin = options.pin;
+        this.pin = pin;
         this.turnedOn = false;
         if (Gpio)
             this.gpio = new Gpio(this.pin, "out");

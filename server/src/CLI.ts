@@ -22,16 +22,15 @@ program
   .option("--pw <pw>", "set password")
   .parse(process.argv);
 
+if (typeof program.relayPin === "undefined") throw new Error("replayPin required");
+if (typeof program.sensorPin === "undefined") throw new Error("sensorPin required");
+
 const sauna = new Sauna({
   targetTemperature: program.targetTemperature,
   maxTemperature: program.maxTemperature,
-  relay: new Relay({
-    pin: program.relayPin
-  }),
+  relay: new Relay(program.relayPin),
   dhtSensors: [
-    new AM2302({
-      pin: program.sensorPin
-    })
+    new AM2302(program.sensorPin)
   ]
 });
 
