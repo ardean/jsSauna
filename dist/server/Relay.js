@@ -15,45 +15,38 @@ class Relay extends events_1.EventEmitter {
         options = options || {};
         this.pin = options.pin;
         this.turnedOn = false;
-        this.core = Gpio && new Gpio(this.pin, "out");
+        if (Gpio)
+            this.gpio = new Gpio(this.pin, "out");
     }
     turnOn() {
         if (this.turnedOn)
             return;
         this.turnedOn = true;
-        return new Promise((resolve, reject) => {
-            if (!this.core)
-                return resolve();
-            this.core.write(1, (err) => {
-                if (err)
-                    return reject(err);
-                resolve();
-            });
-        }).then(() => {
+        if (!this.gpio)
+            return;
+        try {
+            this.gpio.writeSync(1);
             this.emit("change", this.turnedOn);
-        }).catch((err) => {
+        }
+        catch (err) {
             this.turnedOn = false;
             throw err;
-        });
+        }
     }
     turnOff() {
         if (!this.turnedOn)
             return;
         this.turnedOn = false;
-        return new Promise((resolve, reject) => {
-            if (!this.core)
-                return resolve();
-            this.core.write(0, (err) => {
-                if (err)
-                    return reject(err);
-                resolve();
-            });
-        }).then(() => {
+        if (!this.gpio)
+            return;
+        try {
+            this.gpio.writeSync(0);
             this.emit("change", this.turnedOn);
-        }).catch((err) => {
+        }
+        catch (err) {
             this.turnedOn = true;
             throw err;
-        });
+        }
     }
 }
 exports.default = Relay;

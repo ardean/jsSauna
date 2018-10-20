@@ -43,6 +43,12 @@
   version "10.12.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
 
+"@types/onoff@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@types/onoff/-/onoff-3.2.0.tgz#9b9519289235dea0e1d41b260eff83905445c1f8"
+  dependencies:
+    "@types/node" "*"
+
 "@types/range-parser@*":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.2.tgz#fa8e1ad1d474688a757140c91de6dace6f4abc8d"
@@ -137,7 +143,7 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
-bindings@~1.3.0:
+bindings@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.3.0.tgz#b346f6ecf6a95f5a815c5839fc7cdb22502f1ed7"
 
@@ -362,12 +368,12 @@ engine.io@~3.2.0:
     engine.io-parser "~2.1.0"
     ws "~3.3.1"
 
-epoll@~1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/epoll/-/epoll-1.0.2.tgz#d7d913e3fbdaf4315bd029ceecf9dc6487713b57"
+epoll@^2.0.4:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/epoll/-/epoll-2.0.6.tgz#81f38560f8feb5bedbe083eb37b0e8d83f163320"
   dependencies:
-    bindings "~1.3.0"
-    nan "~2.8.0"
+    bindings "^1.3.0"
+    nan "^2.11.1"
 
 error-ex@^1.3.1:
   version "1.3.2"
@@ -617,6 +623,10 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
 lodash@^4.17.10:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
@@ -675,13 +685,9 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-nan@^2.4.0:
+nan@^2.11.1, nan@^2.4.0:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
-
-nan@~2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
 
 negotiator@0.6.1:
   version "0.6.1"
@@ -732,11 +738,12 @@ once@^1.3.0:
   dependencies:
     wrappy "1"
 
-onoff@^1.1.1:
-  version "1.2.0"
-  resolved "http://registry.npmjs.org/onoff/-/onoff-1.2.0.tgz#f642d4e040cd57f63cac5bcee226b573a5795d12"
+onoff@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/onoff/-/onoff-3.2.2.tgz#f2d5118c29d6e11ef9d4a6b60aac160a303427a2"
   dependencies:
-    epoll "~1.0.2"
+    epoll "^2.0.4"
+    lodash.debounce "^4.0.8"
 
 os-locale@^3.0.0:
   version "3.0.1"

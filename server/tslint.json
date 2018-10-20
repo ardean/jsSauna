@@ -17,7 +17,8 @@
     "eofline": false,
     "object-literal-sort-keys": false,
     "arrow-parens": false,
-    "curly": false
+    "curly": false,
+    "no-implicit-dependencies": false
   },
   "rulesDirectory": []
 }
