@@ -1,11 +1,11 @@
 import { log } from "util";
 import DHTSensor, { DHTSensorData } from "./DHTSensor";
 
-let dhtSensor;
+let rpiDhtSensor;
 try {
-  dhtSensor = require("node-dht-sensor");
+  rpiDhtSensor = require("rpi-dht-sensor");
 } catch (err) {
-  log("node-dht-sensor is not installed! Using test data!");
+  log("rpi-dht-sensor is not installed! Using test data!");
 }
 
 interface AM2302Options {
@@ -14,37 +14,33 @@ interface AM2302Options {
 
 export default class AM2302 implements DHTSensor {
   pin: number;
-  type: number;
   round: boolean;
+  gpio: any;
 
   constructor(pin: number, options?: AM2302Options) {
     this.pin = pin;
 
     options = options || {};
-    this.type = 22;
     this.round = typeof options.round === "undefined" ? true : options.round;
+    this.gpio = new rpiDhtSensor.DHT22(this.pin);
   }
 
-  async getData() {
-    if (!dhtSensor) return this.doRound(
+  getData() {
+    if (!rpiDhtSensor) return this.doRound(
       30,
       20
       // getRandomArbitrary(0, 60),
       // getRandomArbitrary(0, 100)
     );
 
-    return new Promise<DHTSensorData>((resolve, reject) => {
-      dhtSensor.read(this.type, this.pin, (err, temperature, humidity) => {
-        if (err) return reject(err);
+    let { temperature, humidity } = this.gpio.read();
 
-        if (this.round) {
-          temperature = roundTwo(temperature);
-          humidity = Math.round(humidity);
-        }
+    if (this.round) {
+      temperature = roundTwo(temperature);
+      humidity = Math.round(humidity);
+    }
 
-        resolve(this.doRound(temperature, humidity));
-      });
-    });
+    return this.doRound(temperature, humidity);
   }
 
   doRound(temperature, humidity): DHTSensorData {

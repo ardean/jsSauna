@@ -36,7 +36,7 @@
     "socket.io": "^2.1.1"
   },
   "optionalDependencies": {
-    "node-dht-sensor": "0.0.32",
+    "rpi-dht-sensor": "^0.1.1",
     "onoff": "^3.2.2"
   },
   "devDependencies": {

@@ -685,7 +685,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-nan@^2.11.1, nan@^2.4.0:
+nan@^2.11.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
 
@@ -696,12 +696,6 @@ negotiator@0.6.1:
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
-
-node-dht-sensor@0.0.32:
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/node-dht-sensor/-/node-dht-sensor-0.0.32.tgz#9bf6988898e5dd4362ff7724caec7ed8900d2532"
-  dependencies:
-    nan "^2.4.0"
 
 normalize-package-data@^2.3.2:
   version "2.4.0"
