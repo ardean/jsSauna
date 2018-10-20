@@ -54,6 +54,7 @@ export default function reducer(state: SettingsState = initialState, action: Set
       };
 
     case "SETTINGS_TARGET_TEMPERATURE_CHANGE":
+    case "SETTINGS_CHANGING_TARGET_TEMPERATURE":
       return {
         ...state,
         settings: {
