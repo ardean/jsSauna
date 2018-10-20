@@ -1,0 +1,23 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:latest"
+  ],
+  "rules": {
+    "interface-name": false,
+    "member-access": false,
+    "ordered-imports": false,
+    "no-console": false,
+    "no-var-requires": true,
+    "trailing-comma": false,
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "eofline": false,
+    "object-literal-sort-keys": false,
+    "arrow-parens": false,
+    "curly": false
+  },
+  "rulesDirectory": []
+}

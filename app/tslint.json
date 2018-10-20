@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react"
+  ],
+  "rules": {
+    "curly": false,
+    "object-literal-sort-keys": false,
+    "trailing-comma": false,
+    "eofline": false,
+    "max-line-length": false,
+    "member-access": false,
+    "no-console": false,
+    "ordered-imports": false,
+    "interface-name": false,
+    "jsx-alignment": false
+  }
+}

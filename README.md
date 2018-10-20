@@ -25,7 +25,7 @@ $ npm i -g jssauna
 Use the new command to start an instance:
 
 ```bash
-$ jsSauna --rp 14 --sp 4
+$ jssauna --rp 14 --sp 4
 ```
 
 ## CLI
