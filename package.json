@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "start": "concurrently -r \"yarn start-server\" \"yarn start-app\"",
-    "start-server": "yarn build-server && node dist/server/CLI --username admin --pw 1234",
+    "start-server": "yarn build-server && NODE_ENV=development node dist/server/CLI --username admin --pw 1234",
     "start-app": "cd app && yarn start",
     "build": "yarn build-server && yarn build-app",
     "build-server": "rm -rf dist/server && tsc -p ./server",

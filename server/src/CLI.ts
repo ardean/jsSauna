@@ -22,8 +22,10 @@ program
   .option("--pw <pw>", "set password")
   .parse(process.argv);
 
-if (typeof program.relayPin === "undefined") throw new Error("relayPin required");
-if (typeof program.sensorPin === "undefined") throw new Error("sensorPin required");
+if (!dev) {
+  if (typeof program.relayPin === "undefined") throw new Error("relayPin required");
+  if (typeof program.sensorPin === "undefined") throw new Error("sensorPin required");
+}
 
 const sauna = new Sauna({
   targetTemperature: program.targetTemperature,

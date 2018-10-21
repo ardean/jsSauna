@@ -13,7 +13,8 @@ class AM2302 {
         this.pin = pin;
         options = options || {};
         this.round = typeof options.round === "undefined" ? true : options.round;
-        this.gpio = new rpiDhtSensor.DHT22(this.pin);
+        if (rpiDhtSensor)
+            this.gpio = new rpiDhtSensor.DHT22(this.pin);
     }
     getData() {
         if (!rpiDhtSensor)

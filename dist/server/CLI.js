@@ -31,10 +31,12 @@ commander_1.default
     .option("--username <username>", "set username")
     .option("--pw <pw>", "set password")
     .parse(process.argv);
-if (typeof commander_1.default.relayPin === "undefined")
-    throw new Error("relayPin required");
-if (typeof commander_1.default.sensorPin === "undefined")
-    throw new Error("sensorPin required");
+if (!config_1.dev) {
+    if (typeof commander_1.default.relayPin === "undefined")
+        throw new Error("relayPin required");
+    if (typeof commander_1.default.sensorPin === "undefined")
+        throw new Error("sensorPin required");
+}
 const sauna = new Sauna_1.default({
     targetTemperature: commander_1.default.targetTemperature,
     maxTemperature: commander_1.default.maxTemperature,
