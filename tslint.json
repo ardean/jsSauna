@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "tslint:latest"
+  ],
+  "rules": {
+    "curly": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "trailing-comma": false,
+    "eofline": false,
+    "member-access": false,
+    "no-var-requires": false,
+    "no-implicit-dependencies": false,
+    "interface-name": false,
+    "no-duplicate-imports": false,
+    "arrow-parens": false
+  }
+}
