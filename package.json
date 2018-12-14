@@ -1,8 +1,8 @@
 {
   "name": "jssauna",
-  "version": "0.1.6",
-  "description": "A Web Based Sauna Control System written in JavaScript",
-  "main": "src/index.js",
+  "version": "0.2.1",
+  "description": "A Web Based Sauna Control System written in TypeScript",
+  "main": "dist/index.js",
   "author": "ardean",
   "repository": "https://github.com/ardean/jsSauna",
   "bugs": "https://github.com/ardean/jsSauna/issues",
@@ -19,67 +19,31 @@
     "web-interface",
     "web"
   ],
-  "scripts": {
-    "start": "babel-node src/cli.js --username admin --pw 1234",
-    "build": "npm run cleanup && npm run build-server && npm run build-client",
-    "build-server": "babel src --out-dir dist/server",
-    "build-client": "npm run build-js && npm run build-html && npm run build-css && npm run build-img",
-    "build-js": "jspm build src/index.js dist/client/index.js --minify --skip-source-maps",
-    "build-html": "cpy client/*.html dist/client",
-    "build-css": "cpy client/*.css dist/client",
-    "build-img": "cpy client/*.jpg dist/client",
-    "cleanup": "del-cli dist"
-  },
   "bin": {
-    "jsSauna": "./bin/index.js"
+    "jssauna": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development nodemon",
+    "start-login": "NODE_ENV=development nodemon -- --username admin --pw 1234",
+    "build": "rm -rf dist && tsc"
   },
   "dependencies": {
-    "commander": "^2.9.0",
-    "express": "^4.14.1",
-    "socket.io": "^1.7.2"
+    "commander": "^2.19.0",
+    "express": "^4.16.4",
+    "jssauna-app": "https://github.com/ardean/jsSauna-app.git#v0.2.1",
+    "meteor-random": "^0.0.3",
+    "socket.io": "^2.1.1"
   },
   "optionalDependencies": {
-    "node-dht-sensor": "0.0.32",
-    "onoff": "^1.1.1"
+    "onoff": "^3.2.2",
+    "rpi-dht-sensor": "^0.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-preset-node6": "^11.0.0",
-    "cpy-cli": "^1.0.1",
-    "del-cli": "^0.2.1",
-    "jspm": "^0.17.0-beta.37"
-  },
-  "jspm": {
-    "directories": {
-      "baseURL": "client"
-    },
-    "dependencies": {
-      "events": "npm:jspm-nodelibs-events@^0.2.0",
-      "jquery": "npm:jquery@^3.1.1"
-    },
-    "devDependencies": {
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4",
-      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
-      "path": "npm:jspm-nodelibs-path@^0.2.0",
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.20"
-    },
-    "peerDependencies": {
-      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
-      "process": "npm:jspm-nodelibs-process@^0.2.0",
-      "util": "npm:jspm-nodelibs-util@^0.2.0"
-    },
-    "overrides": {
-      "npm:babel-runtime@5.8.38": {
-        "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
-      "npm:jquery@3.1.1": {
-        "format": "amd"
-      }
-    }
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.12.0",
+    "@types/onoff": "^3.2.0",
+    "@types/socket.io": "^1.4.38",
+    "nodemon": "^1.18.8",
+    "typescript": "^3.2.2"
   }
 }
