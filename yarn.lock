@@ -1301,9 +1301,9 @@ isomorphic-fetch@^2.1.1:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-"jssauna-app@https://github.com/ardean/jsSauna-app.git#v0.2.1":
-  version "0.2.1"
-  resolved "https://github.com/ardean/jsSauna-app.git#345dff1804924a598a59148decd0ad19384e8899"
+"jssauna-app@https://github.com/ardean/jsSauna-app.git#v0.2.2":
+  version "0.2.2"
+  resolved "https://github.com/ardean/jsSauna-app.git#1c5619c381610d44bc041b480929975f99ff60a5"
   dependencies:
     react "^16.4.2"
     react-dom "^16.5.2"

@@ -18,7 +18,7 @@ class AM2302 {
     }
     getData() {
         if (!rpiDhtSensor)
-            return this.doRound(30, 20
+            return this.doRound(30.02, 20.14
             // getRandomArbitrary(0, 60),
             // getRandomArbitrary(0, 100)
             );
@@ -32,7 +32,7 @@ class AM2302 {
     doRound(temperature, humidity) {
         if (this.round) {
             temperature = roundTwo(temperature);
-            humidity = Math.round(humidity);
+            humidity = roundTwo(humidity);
         }
         return {
             temperature,

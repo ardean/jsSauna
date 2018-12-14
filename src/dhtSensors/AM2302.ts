@@ -27,8 +27,8 @@ export default class AM2302 implements DHTSensor {
 
   getData() {
     if (!rpiDhtSensor) return this.doRound(
-      30,
-      20
+      30.02,
+      20.14
       // getRandomArbitrary(0, 60),
       // getRandomArbitrary(0, 100)
     );
@@ -46,7 +46,7 @@ export default class AM2302 implements DHTSensor {
   doRound(temperature: number, humidity: number): DHTSensorData {
     if (this.round) {
       temperature = roundTwo(temperature);
-      humidity = Math.round(humidity);
+      humidity = roundTwo(humidity);
     }
 
     return {

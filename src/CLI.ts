@@ -43,16 +43,16 @@ sauna
     log(err);
   })
   .on("heatingChange", (heating: boolean) => {
-    log("sauna is " + (!heating ? "not " : "") + "heating");
+    log(`sauna is ${!heating ? "not " : ""}heating`);
   })
   .on("temperatureChange", (temperature: number) => {
-    log("temperature at " + temperature.toFixed(0) + "°C");
+    log(`temperature at ${temperature}°C`);
   })
   .on("targetTemperatureChange", (targetTemperature: number) => {
-    log("target temperature at " + targetTemperature.toFixed(0) + "°C");
+    log(`target temperature at ${targetTemperature}°C`);
   })
   .on("humidityChange", (humidity: number) => {
-    log("humidity at " + humidity.toFixed(0) + "%");
+    log(`humidity at ${humidity}%`);
   });
 
 let users: User[];
