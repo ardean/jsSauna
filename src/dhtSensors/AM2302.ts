@@ -5,7 +5,7 @@ let rpiDhtSensor;
 try {
   rpiDhtSensor = require("rpi-dht-sensor");
 } catch (err) {
-  log("rpi-dht-sensor is not installed! Using test data!");
+  log("rpi-dht-sensor is not installed! using fake data now!");
 }
 
 interface AM2302Options {

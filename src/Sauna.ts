@@ -21,6 +21,7 @@ export default class Sauna extends EventEmitter {
   temperature: number;
   dhtSensorsWatchIntervalId: NodeJS.Timeout;
   humidity: number;
+  heating: boolean = false;
 
   constructor(options?: SaunaOptions) {
     super();
@@ -39,8 +40,9 @@ export default class Sauna extends EventEmitter {
     if (this.dhtSensors.length < 1) throw new Error("no dht sensors");
     if (!this.relay) throw new Error("no relay");
 
-    this.relay.on("change", (isHeating) => {
-      this.emit("isHeating", isHeating);
+    this.relay.on("change", (heating: boolean) => {
+      this.heating = heating;
+      this.emit("heatingChange", heating);
     });
 
     this.watchDhtSensors();
@@ -72,16 +74,14 @@ export default class Sauna extends EventEmitter {
   changeTargetTemperature(targetTemperature: number) {
     targetTemperature = Math.min(this.maxTemperature, targetTemperature);
     this.targetTemperature = Math.max(0, targetTemperature);
+    this.handleTemperature();
     this.emit("targetTemperatureChange", this.targetTemperature);
   }
 
   handleTemperature() {
     if (!this.turnedOn) return;
-    if (this.temperature > this.targetTemperature) {
-      return this.relay.turnOff();
-    } else {
-      return this.relay.turnOn();
-    }
+    if (this.temperature >= this.targetTemperature) return this.relay.turnOff();
+    return this.relay.turnOn();
   }
 
   async watchDhtSensors() {

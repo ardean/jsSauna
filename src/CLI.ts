@@ -1,17 +1,19 @@
 import User from "./User";
-import GPIO from "./GPIO";
 import { log } from "util";
 import Sauna from "./Sauna";
 import Relay from "./Relay";
 import { dev } from "./config";
+import gpioUtil from "./gpioUtil";
 import * as program from "commander";
 import AM2302 from "./dhtSensors/AM2302";
 import SaunaControl from "./SaunaControl";
 
-log(`${dev ? "development" : "production"} mode`);
+const { version } = require("../package.json");
+
+log(`${dev ? "development" : "production"} mode, v${version}`);
 
 program
-  .version("0.2.0")
+  .version(version)
   .option("-p, --port <port>", "override default webserver port", parseInt)
   .option("-t, --target-temperature <targetTemperature>", "override default target temperature (50°C)", parseInt)
   .option("-m, --max-temperature <maxTemperature>", "override default max temperature (60°C)", parseInt)
@@ -40,16 +42,16 @@ sauna
   .on("error", (err) => {
     log(err);
   })
-  .on("isHeating", (isHeating) => {
-    log("sauna is " + (!isHeating ? "not " : "") + "heating");
+  .on("heatingChange", (heating: boolean) => {
+    log("sauna is " + (!heating ? "not " : "") + "heating");
   })
-  .on("temperatureChange", (temperature) => {
+  .on("temperatureChange", (temperature: number) => {
     log("temperature at " + temperature.toFixed(0) + "°C");
   })
-  .on("targetTemperatureChange", (targetTemperature) => {
+  .on("targetTemperatureChange", (targetTemperature: number) => {
     log("target temperature at " + targetTemperature.toFixed(0) + "°C");
   })
-  .on("humidityChange", (humidity) => {
+  .on("humidityChange", (humidity: number) => {
     log("humidity at " + humidity.toFixed(0) + "%");
   });
 
@@ -68,7 +70,7 @@ const saunaControl = new SaunaControl(sauna, {
 
 (async () => {
   if (program.driveStrength) {
-    await GPIO.setDriveStrength(program.driveStrength);
+    await gpioUtil.setDriveStrength(program.driveStrength);
   }
 
   try {

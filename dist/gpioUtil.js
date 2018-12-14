@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const util_1 = require("util");
 const child_process_1 = require("child_process");
-class GPIO {
+class GPIOUtil {
     async setDriveStrength(driveStrength = 7) {
         util_1.log("setting drive strength to " + driveStrength);
         const executePromise = new Promise((resolve, reject) => {
@@ -20,5 +20,5 @@ class GPIO {
         }
     }
 }
-exports.default = new GPIO();
-//# sourceMappingURL=GPIO.js.map
+exports.default = new GPIOUtil();
+//# sourceMappingURL=gpioUtil.js.map

@@ -6,7 +6,7 @@ try {
     rpiDhtSensor = require("rpi-dht-sensor");
 }
 catch (err) {
-    util_1.log("rpi-dht-sensor is not installed! Using test data!");
+    util_1.log("rpi-dht-sensor is not installed! using fake data now!");
 }
 class AM2302 {
     constructor(pin, options) {

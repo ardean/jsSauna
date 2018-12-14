@@ -5,7 +5,7 @@ let Gpio;
 try {
   Gpio = require("onoff").Gpio;
 } catch (err) {
-  log("onoff is not installed! Ignoring On / Off requests!");
+  log("onoff is not installed! using fake relay now!");
 }
 
 export default class Relay extends EventEmitter {
@@ -25,7 +25,7 @@ export default class Relay extends EventEmitter {
     if (this.turnedOn) return;
     this.turnedOn = true;
 
-    if (!this.gpio) return;
+    if (!this.gpio) return this.emit("change", this.turnedOn);;
 
     try {
       this.gpio.writeSync(1);
@@ -40,7 +40,7 @@ export default class Relay extends EventEmitter {
     if (!this.turnedOn) return;
     this.turnedOn = false;
 
-    if (!this.gpio) return;
+    if (!this.gpio) return this.emit("change", this.turnedOn);
 
     try {
       this.gpio.writeSync(0);

@@ -4,6 +4,7 @@ const events_1 = require("events");
 class Sauna extends events_1.EventEmitter {
     constructor(options) {
         super();
+        this.heating = false;
         this.checkDHTSensors = async () => {
             const dataPromises = this.dhtSensors.map(dhtSensor => dhtSensor.getData());
             const dhtSensorDataList = await Promise.all(dataPromises);
@@ -51,8 +52,9 @@ class Sauna extends events_1.EventEmitter {
             throw new Error("no dht sensors");
         if (!this.relay)
             throw new Error("no relay");
-        this.relay.on("change", (isHeating) => {
-            this.emit("isHeating", isHeating);
+        this.relay.on("change", (heating) => {
+            this.heating = heating;
+            this.emit("heatingChange", heating);
         });
         this.watchDhtSensors();
     }
@@ -79,17 +81,15 @@ class Sauna extends events_1.EventEmitter {
     changeTargetTemperature(targetTemperature) {
         targetTemperature = Math.min(this.maxTemperature, targetTemperature);
         this.targetTemperature = Math.max(0, targetTemperature);
+        this.handleTemperature();
         this.emit("targetTemperatureChange", this.targetTemperature);
     }
     handleTemperature() {
         if (!this.turnedOn)
             return;
-        if (this.temperature > this.targetTemperature) {
+        if (this.temperature >= this.targetTemperature)
             return this.relay.turnOff();
-        }
-        else {
-            return this.relay.turnOn();
-        }
+        return this.relay.turnOn();
     }
     async watchDhtSensors() {
         if (this.watchingDhtSensors)

@@ -3,7 +3,7 @@ import { exec } from "child_process";
 
 export type DriveStrength = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
-class GPIO {
+class GPIOUtil {
   async setDriveStrength(driveStrength: DriveStrength = 7) {
     log("setting drive strength to " + driveStrength);
 
@@ -22,4 +22,4 @@ class GPIO {
   }
 }
 
-export default new GPIO();
+export default new GPIOUtil();

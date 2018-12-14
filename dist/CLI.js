@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const GPIO_1 = require("./GPIO");
 const util_1 = require("util");
 const Sauna_1 = require("./Sauna");
 const Relay_1 = require("./Relay");
 const config_1 = require("./config");
+const gpioUtil_1 = require("./gpioUtil");
 const program = require("commander");
 const AM2302_1 = require("./dhtSensors/AM2302");
 const SaunaControl_1 = require("./SaunaControl");
-util_1.log(`${config_1.dev ? "development" : "production"} mode`);
+const { version } = require("../package.json");
+util_1.log(`${config_1.dev ? "development" : "production"} mode, v${version}`);
 program
-    .version("0.2.0")
+    .version(version)
     .option("-p, --port <port>", "override default webserver port", parseInt)
     .option("-t, --target-temperature <targetTemperature>", "override default target temperature (50°C)", parseInt)
     .option("-m, --max-temperature <maxTemperature>", "override default max temperature (60°C)", parseInt)
@@ -38,8 +39,8 @@ sauna
     .on("error", (err) => {
     util_1.log(err);
 })
-    .on("isHeating", (isHeating) => {
-    util_1.log("sauna is " + (!isHeating ? "not " : "") + "heating");
+    .on("heatingChange", (heating) => {
+    util_1.log("sauna is " + (!heating ? "not " : "") + "heating");
 })
     .on("temperatureChange", (temperature) => {
     util_1.log("temperature at " + temperature.toFixed(0) + "°C");
@@ -63,7 +64,7 @@ const saunaControl = new SaunaControl_1.default(sauna, {
 });
 (async () => {
     if (program.driveStrength) {
-        await GPIO_1.default.setDriveStrength(program.driveStrength);
+        await gpioUtil_1.default.setDriveStrength(program.driveStrength);
     }
     try {
         saunaControl.listen(program.port);
