@@ -2,7 +2,7 @@
 
 [![NPM Version][npm-image]][downloads-url] [![NPM Downloads][downloads-image]][downloads-url]
 
-**A Web Based Sauna Control System written in JavaScript**
+**A Web Based Sauna Control System written in TypeScript**
 
 I use this package to control my sauna with my **Raspberry pi**.
 There is a solid state relay to switch the heater `On` and `Off`, as well as a `temperature` and `humidity` sensor to measure the surroundings.
