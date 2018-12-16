@@ -1,6 +1,6 @@
 {
   "name": "jssauna",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A Web Based Sauna Control System written in TypeScript",
   "main": "dist/index.js",
   "author": "ardean",
@@ -30,7 +30,7 @@
   "dependencies": {
     "commander": "^2.19.0",
     "express": "^4.16.4",
-    "jssauna-app": "https://github.com/ardean/jsSauna-app.git#v0.2.2",
+    "jssauna-app": "https://github.com/ardean/jsSauna-app.git#v0.2.3",
     "meteor-random": "^0.0.3",
     "socket.io": "^2.1.1"
   },
