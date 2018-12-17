@@ -1,10 +1,12 @@
 # jsSauna
+> A Web Based Sauna Control System written in TypeScript.
 
-[![NPM Version][npm-image]][downloads-url] [![NPM Downloads][downloads-image]][downloads-url]
+[![Github Version](https://img.shields.io/github/release/ardean/jsSauna.svg)](https://github.com/ardean/jsSauna)
+[![NPM Version](https://img.shields.io/npm/v/jssauna.svg)](https://npmjs.org/package/jssauna)
+[![NPM Downloads](https://img.shields.io/npm/dm/jssauna.svg)](https://npmjs.org/package/jssauna)
+[![License](https://img.shields.io/npm/l/jssauna.svg)](LICENSE.md)
 
-**A Web Based Sauna Control System written in TypeScript**
-
-I use this package to control my sauna with my **Raspberry pi**.
+I use this package to control my sauna with my **raspberry pi**.
 There is a solid state relay to switch the heater `On` and `Off`, as well as a `temperature` and `humidity` sensor to measure the surroundings.
 
 - DHT Sensor: [https://www.adafruit.com/product/393](https://www.adafruit.com/product/393)
@@ -88,9 +90,4 @@ If you have problems installing jsSauna globally as root using `sudo npm i -g js
 
 ## License
 
-[MIT](LICENSE)
-
-[downloads-image]: https://img.shields.io/npm/dm/jssauna.svg
-[downloads-url]: https://npmjs.org/package/jssauna
-[npm-image]: https://img.shields.io/npm/v/jssauna.svg
-[npm-url]: https://npmjs.org/package/jssauna
+[MIT](LICENSE.md)
