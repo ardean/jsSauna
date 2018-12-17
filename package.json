@@ -1,6 +1,6 @@
 {
   "name": "jssauna",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A Web Based Sauna Control System written in TypeScript",
   "main": "dist/index.js",
   "author": "ardean",
